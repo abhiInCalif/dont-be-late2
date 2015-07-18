@@ -1,0 +1,85 @@
+@()
+
+<!doctype html>
+
+<html>
+  <head>
+    <title>Don't Be Late | Leaderboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Maiden+Orange' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/css/bootcards-desktop.min.css">
+    <link rel="stylesheet" href="assets/main.css">
+    <script src="assets/node_modules/jquery/dist/jquery.js"></script>
+    <script src="assets/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/js/bootcards.min.js"></script>
+    <script src="assets/javascript/api.js"></script>
+    <script src="assets/javascript/index.js"></script>
+    <link href="assets/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+
+
+    <script>
+    $(document).ready(function() {
+      bootcards.init( {
+        offCanvasBackdrop : true,
+        offCanvasHideOnMainClick : true,
+        enableTabletPortraitMode : true,
+        disableRubberBanding : true,
+        disableBreakoutSelector : 'a.no-break-out'
+      });
+
+      // var commitments = getCommitments();
+      // var history = getHistory();
+      // var name = getName();
+      var id = "whatever";
+      $(".list-group-item").click(function() {
+        window.location.replace("/track/" + id);
+      });
+      $("#addEvent").click(function() {
+        window.location.replace("/create");
+      });
+    });
+  </script>
+  </head>
+
+  <body>
+    <img src="assets/Other_Views.jpg" id="background-pic">
+    <style>
+    #background-pic {
+    position:absolute;
+    z-index:-1;
+    height:100%;
+    }
+    </style>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div id="divContainer" class="container">
+        <div class="navbar-header" style="background-color: #FFD800; font-family: 'Maiden Orange', cursive; font-size: 72px">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarContent">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand navbar-left" href="#">
+            DON'T BE LATE
+          </a>
+        </div>
+        <div id="navbarContent" class="collapse navbar-collapse" style="border-width: 2px; border-color: #FF6A00; background-color: #FF6A00">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li class="active"><a href="/leader">Leaderboard</a></li>
+            <li><a href="/create" id="addEvent">Add Event</a></li>
+              <!--<li><a href="#">Leaderboard</a></li>-->
+            <li><a href="/login">Logout</a></li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+    <img src="assets/leaderboard_backdrop.jpg"></img>
+  </div>
+  </body>
+</html>

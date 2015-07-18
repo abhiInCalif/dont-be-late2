@@ -7,7 +7,8 @@
     <title>Don't Be Late | Dashboard</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="assets/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Maiden+Orange' rel='stylesheet' type='text/css'>
+    
       <!--
 	<link href="css/stylesheet.css" rel="stylesheet">
 -->
@@ -18,6 +19,7 @@
     <script src="/assets/node_modules/jquery-cookie/src/jquery.cookie.js"></script>
     <script src="assets/node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/js/bootcards.min.js"></script>
+    <link href="assets/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <script>
 $(document).ready(function() {
 	bootcards.init( {
@@ -42,7 +44,7 @@ $(document).ready(function() {
     </style>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div id="divContainer" class="container">
-        <div class="navbar-header">
+        <div class="navbar-header" style="background-color: #FFD800; font-family: 'Maiden Orange', cursive; font-size: 72px">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarContent">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -50,14 +52,18 @@ $(document).ready(function() {
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand navbar-left" href="#">
-            Mobile first web site
+            DON'T BE LATE
           </a>
         </div>
-        <div id="navbarContent" class="collapse navbar-collapse">
+        <div id="navbarContent" class="collapse navbar-collapse" style="border-width: 2px; border-color: #FF6A00; background-color: #FF6A00">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Help</a></li>
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/leader">Leaderboard</a></li>
+            <li class="active"><a href="/create" id="addEvent">Add Event</a></li>
+              <!--<li><a href="#">Leaderboard</a></li>-->
+            <li><a href="/login">Logout</a></li>
+
           </ul>
         </div>
       </div>
@@ -65,6 +71,8 @@ $(document).ready(function() {
 
 
     <div class="container">
+      <div class="panel panel-warning">
+        <div class="panel-heading">New Event Details</div>
     <script type="text/javascript">
       $(function() {
         $('#create-form').submit(function(){
@@ -76,37 +84,37 @@ $(document).ready(function() {
       });
       </script>
     <form class="form" id="create-form">
-      <div class="form-group form-group-lg">
+      <div class="form-group">
         <label for="newName" class="col-sm-2 control-label">Name</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="newName" placeholder="Event name">
         </div>
       </div>
-      <div class="form-group form-group-lg">
+      <div class="form-group">
         <label for="newPeople" class="col-sm-2 control-label">People</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="newPeople" placeholder="Person 1, Person 2, Person 3">
         </div>
       </div>
-      <div class="form-group form-group-lg">
+      <div class="form-group">
         <label for="newLocation" class="col-sm-2 control-label">Location</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="newLocation" placeholder="Los Altos">
         </div>
       </div>
-      <div class="form-group form-group-lg">
+      <div class="form-group">
         <label for="newPunishment" class="col-sm-2 control-label">Punishment</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="newPunishment" placeholder="15 pushups">
         </div>
       </div>
-      <div class="form-group form-group-lg">
+      <div class="form-group">
         <label for="newStart" class="col-sm-2 control-label">Start before (Minutes)</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="newStart" placeholder="30">
         </div>
       </div>
-      <div class="form-group form-group-lg">
+      <div class="form-group">
         <label for="newEnd" class="col-sm-2 control-label">End after (Minutes)</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="newEnd" placeholder="45">
@@ -114,10 +122,11 @@ $(document).ready(function() {
       </div>
       <div class="form-group">
         <div class="col-sm-offset-0 col-sm-14">
-          <button type="submit" class="btn btn-lg btn-custom">Go!</button>
+          <center><button type="submit" class="btn btn-default" style="width:40%">Go!</button></center>
         </div>
       </div>
     </form>
+</div>
 </div>
   </body>
 </html>
