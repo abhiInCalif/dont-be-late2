@@ -15,7 +15,7 @@
       <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/css/bootcards-desktop.min.css">
       <link rel="stylesheet" href="/assets/main.css">
       <style type="text/css">
-      html, body, #map-canvas { height: 100%; margin-top: 0px;}
+      html, body, #map-canvas { height: 50%; margin-top: 0px;}
       </style>
       <script src="/assets/node_modules/jquery/dist/jquery.js"></script>
       <script src="/assets/node_modules/bootstrap/dist/js/bootstrap.js"></script>
@@ -37,7 +37,7 @@
           new google.maps.LatLng(37.423644, -122.090284),
           new google.maps.LatLng(37.423790, -122.088844),
           new google.maps.LatLng(37.423387, -122.086513)];
-          var superLocations = [new google.maps.LatLng(37.415505, -122.092883),
+          var superLocations = [new google.maps.LatLng(37.422294, -122.078008),
           new google.maps.LatLng(37.423120, -122.077938),
           new google.maps.LatLng(37.423342, -122.077171),
           new google.maps.LatLng(37.423333, -122.075996),
@@ -47,6 +47,36 @@
           new google.maps.LatLng(37.423316, -122.071898),
           new google.maps.LatLng(37.423052, -122.071533),
           new google.maps.LatLng(37.423359, -122.071125)];
+          var wonderLocations = [new google.maps.LatLng(37.423214, -122.085223),
+          new google.maps.LatLng(37.423052, -122.083496),
+          new google.maps.LatLng(37.423095, -122.082273),
+          new google.maps.LatLng(37.423240, -122.080846),
+          new google.maps.LatLng(37.423282, -122.079901),
+          new google.maps.LatLng(37.423342, -122.078217),
+          new google.maps.LatLng(37.423325, -122.076758),
+          new google.maps.LatLng(37.423342, -122.075159),
+          new google.maps.LatLng(37.423316, -122.073765),
+          new google.maps.LatLng(37.423316, -122.072681)];
+          var spiderLocations = [new google.maps.LatLng(37.414810, -122.078000),
+new google.maps.LatLng(37.415620, -122.078005),
+new google.maps.LatLng(37.417062, -122.077968),
+new google.maps.LatLng(37.418638, -122.077930),
+new google.maps.LatLng(37.420347, -122.077930),
+new google.maps.LatLng(37.420347, -122.077930),
+new google.maps.LatLng(37.421819, -122.078080),
+new google.maps.LatLng(37.422904, -122.077968),
+new google.maps.LatLng(37.423330, -122.077630),
+new google.maps.LatLng(37.423304, -122.076632)];
+          var captainLocations = [new google.maps.LatLng(37.398853, -122.100238),
+new google.maps.LatLng(37.402727, -122.097785),
+new google.maps.LatLng(37.405835, -122.095887),
+new google.maps.LatLng(37.409082, -122.093989),
+new google.maps.LatLng(37.411448, -122.092617),
+new google.maps.LatLng(37.413512, -122.092646),
+new google.maps.LatLng(37.415378, -122.092844),
+new google.maps.LatLng(37.416537, -122.093048),
+new google.maps.LatLng(37.418216, -122.093193),
+new google.maps.LatLng(37.419579, -122.093086)];
           var mapOptions = {
             zoom: 4,
             center: new google.maps.LatLng(-33, 151)
@@ -64,13 +94,28 @@
             map: map,
             icon: '/assets/Superman.png'
           });
+          var wonderMarker = new google.maps.Marker({
+            position: wonderLocations[0],
+            map: map,
+            icon: '/assets/Wonderwoman.png'
+          });
+          var spiderMarker = new google.maps.Marker({
+            position: spiderLocations[0],
+            map: map,
+            icon: '/assets/Spiderman.png'
+          });
+          var captainMarker = new google.maps.Marker({
+            position: captainLocations[0],
+            map: map,
+            icon: '/assets/Captainamerican.png'
+          });
           // var dest = getDestination(); // expects latLong
           var destMarker = new google.maps.Marker({
             position: new google.maps.LatLng(37.423327, -122.070741),
             map: map
           });
 
-          var markers = [batMarker, superMarker, destMarker];
+          var markers = [batMarker, superMarker, wonderMarker, spiderMarker, captainMarker, destMarker];
           var bounds = new google.maps.LatLngBounds();
           for(i = 0; i < markers.length; i++) {
             bounds.extend(markers[i].getPosition());
@@ -82,6 +127,9 @@
           if (count < 10) {
           batMarker.setPosition(batLocations[count]);
           superMarker.setPosition(superLocations[count]);
+          wonderMarker.setPosition(wonderLocations[count]);
+          spiderMarker.setPosition(spiderLocations[count]);
+          captainMarker.setPosition(captainLocations[count]);
           count++;
           }
           }, 5000);
