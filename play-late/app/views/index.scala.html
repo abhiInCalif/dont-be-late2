@@ -36,6 +36,9 @@
       $(".list-group-item").click(function() {
         window.location.replace("/track/" + id);
       });
+      $("#addEvent").click(function() {
+        window.location.replace("/create");
+      });
 		});
 	</script>
   </head>
@@ -64,11 +67,11 @@
         </div>
         <div id="navbarContent" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="#">Dashboard</a></li>
+            <li class="active"><a href="/">Dashboard</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Events</a></li>
+            <li><a href="#" id="addEvent">Add Event</a></li>
               <!--<li><a href="#">Leaderboard</a></li>-->
-            <li><a href="#">Help</a></li>
             <li><a href="#">Logout</a></li>
 
           </ul>
