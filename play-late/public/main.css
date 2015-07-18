@@ -47,6 +47,10 @@ label {
 	width:25%;
 }
 
+#mapContainer {
+	height: 920px;
+}
+
 .btn-group-custom {
 	width: 100%;
 }

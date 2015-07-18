@@ -94,6 +94,26 @@ function createParseAPI(){
 		}
 	}
 
+
+	api.addEventToUser = function(userID, eventId, callBack){
+		var xhr = new XMLHttpRequest();
+		xhr.open("PUT", 'https://api.parse.com/1/users/' + userID, true);
+		addHeaderKeys(xhr);
+		var data = {"events":{"__op":"AddUnique","objects":[{"__type":"Pointer","className":"Event","objectId":eventId}]}};
+		console.log("data :" + JSON.stringify(data));
+		xhr.send(JSON.stringify(data));
+		xhr.onreadystatechange = function() {
+		  if (xhr.readyState == 4) {
+		    var result = JSON.parse(xhr.responseText);
+		    if (result && callBack != undefined) {
+		    	callBack(result)
+		    }else{
+		    	callBack([]);
+		    }
+		  }
+		}
+	}
+
 	api.createEvent = function(event, callBack){
 		var attendees = [];
 		var geoLocation = {
@@ -105,9 +125,6 @@ function createParseAPI(){
 		for (var userId in event.attendees){
 			attendees.push({"__type":"Pointer","className":"User","objectId":userId})
 		}
-		for (var userId in event.attendees){
-			attendees.push({"__type":"Pointer","className":"User","objectId":userId})
-		}
 
 		event.attendees = attendees;
 		var xhr = new XMLHttpRequest();
@@ -116,14 +133,27 @@ function createParseAPI(){
 		xhr.setRequestHeader("Content-Type", "application/json");
     	var data = JSON.stringify(event);
 		xhr.send(data);
+		
+		var eventId;
 		xhr.onreadystatechange = function() {
 		  if (xhr.readyState == 4) {
 		    var result = JSON.parse(xhr.responseText);
 		    if (result.objectId && callBack != undefined) {
+		    	updateUsers(result.objectId);
 				callBack(result.objectId);
 		    }
 		  }
 		}
+		function updateUsers(eventId){
+			for (var userRel in attendees){
+				console.log("rel" + userRel);
+				ParseAPI.addEventToUser(userRel.objectId, eventId, function(text){
+					console.log(text);
+				});
+				attendees.push({"__type":"Pointer","className":"User","objectId":userId})
+			}
+		}
+		
 	}
 
 	function addHeaderKeys(xhr){
