@@ -54,43 +54,49 @@ $(document).ready(function() {
 
 
 	<form class="form-horizontal">
-		<div class="form-group">
+		<div class="form-group form-group-lg">
 			<label for="newName" class="col-sm-2 control-label">Name</label>
 			<div class="col-sm-10">
 				<input type="email" class="form-control" id="newName" placeholder="Event name">
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-group form-group-lg">
 			<label for="newPeople" class="col-sm-2 control-label">People</label>
 			<div class="col-sm-10">
 				<input type="email" class="form-control" id="newPeople" placeholder="Person 1, Person 2, Person 3">
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-group form-group-lg">
 			<label for="newLocation" class="col-sm-2 control-label">Location</label>
 			<div class="col-sm-10">
 				<input type="email" class="form-control" id="newLocation" placeholder="Los Altos">
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-group form-group-lg">
 			<label for="newPunishment" class="col-sm-2 control-label">Punishment</label>
 			<div class="col-sm-10">
 				<input type="email" class="form-control" id="newPunishment" placeholder="15 pushups">
 			</div>
 		</div>
-		<div class="form-group">
-			<label for="newTrackTime">Start location tracking</label>
-			<select id="newTrackTime" class="form-control">
-				<option>5 min before</option>
-				<option>10 min before</option>
-				<option>15 min before</option>
-				<option>30 min before</option>
-				<option>60 min before</option>
-			</select>
+		<div class="form-group form-group-lg">
+			<div class="btn-group btn-group-custom" data-toggle="buttons">
+				<label class="btn btn-primary active ignore-margins">
+					<input type="radio" autocomplete="off" checked>5 minutes
+				</label>
+				<label class="btn btn-primary ignore-margins">
+					<input type="radio" autocomplete="off">10 minutes
+				</label>
+				<label class="btn btn-primary ignore-margins">
+					<input type="radio" autocomplete="off">15 minutes
+				</label>
+				<label class="btn btn-primary ignore-margins">
+					<input type="radio" autocomplete="off">20 minutes
+				</label>
+			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-default">Go!</button>
+			<div class="col-sm-offset-0 col-sm-14">
+				<button type="submit" class="btn btn-lg btn-custom">Go!</button>
 			</div>
 		</div>
 	</form>

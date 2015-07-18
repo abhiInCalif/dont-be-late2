@@ -23,3 +23,39 @@
 .span-custom {
 	border-radius: 0px !important;
 }
+
+input {
+	border-radius: 0px !important;
+}
+
+#newTrackTime {
+	width: 93%;
+	margin-left: 15px;
+	border-radius: 0px !important;
+}
+
+#labelNewTrackTime {
+	padding-left: 15px;
+}
+
+label {
+	margin-left: 15px !important;
+}
+
+.ignore-margins {
+	margin: 0px !important;
+	width:25%;
+}
+
+.btn-group-custom {
+	width: 100%;
+}
+
+.btn-custom {
+	width: 100%;
+	border-radius: 0px;
+}
+
+.btn-group-custom-go {
+
+}
