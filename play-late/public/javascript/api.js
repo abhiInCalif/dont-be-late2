@@ -40,14 +40,18 @@ function createParseAPI(){
 
 	api.getEvents = function(userId, callBack){
 		var xhr = new XMLHttpRequest();
-		xhr.open("GET", 'https://api.parse.com/1/users/' + userId + '?where{include:Event', true);
+		xhr.open("GET", 'https://api.parse.com/1/classes/UserEvents?where{userId:' + userId + ",include:Event}", true);
 		addHeaderKeys(xhr);
 		xhr.send();
 		xhr.onreadystatechange = function() {
 		  if (xhr.readyState == 4) {
 		    var result = JSON.parse(xhr.responseText);
-		    if (result["events"] && callBack != undefined) {
-		    	callBack(result["events"])
+		    if (result["results"] && callBack != undefined) {
+		    	var events = [];
+		    	for(var userEventJoin in result["results"]){
+		    		events.push(userEventJoin["event"])
+		    	}
+		    	callBack()
 		    }else{
 		    	callBack([]);
 		    }
@@ -63,7 +67,7 @@ function createParseAPI(){
 		xhr.onreadystatechange = function() {
 		  if (xhr.readyState == 4) {
 		    var result = JSON.parse(xhr.responseText);
-		  
+		 
 		    if (result["attendees"] && callBack != undefined) {
 		    	var locations =[]
 		    	for(var user in result["attendees"]){
@@ -93,45 +97,15 @@ function createParseAPI(){
 		  }
 		}
 	}
+	api.addUserEventJoin = function(userId, eventId){
+		console.log("addUser");
+		var eventRel = {"__type":"Pointer","className":"Event","objectId":eventId};
 
-
-	api.addEventToUser = function(userID, eventId, callBack){
 		var xhr = new XMLHttpRequest();
-		xhr.open("PUT", 'https://api.parse.com/1/users/' + userID, true);
-		addHeaderKeys(xhr);
-		var data = {"events":{"__op":"AddUnique","objects":[{"__type":"Pointer","className":"Event","objectId":eventId}]}};
-		console.log("data :" + JSON.stringify(data));
-		xhr.send(JSON.stringify(data));
-		xhr.onreadystatechange = function() {
-		  if (xhr.readyState == 4) {
-		    var result = JSON.parse(xhr.responseText);
-		    if (result && callBack != undefined) {
-		    	callBack(result)
-		    }else{
-		    	callBack([]);
-		    }
-		  }
-		}
-	}
-
-	api.createEvent = function(event, callBack){
-		var attendees = [];
-		var geoLocation = {
-          "__type": "GeoPoint",
-          "latitude": event.destination.latitude,
-          "longitude": event.destination.longitude
-        }
-        event.destination = geoLocation;
-		for (var userId in event.attendees){
-			attendees.push({"__type":"Pointer","className":"User","objectId":userId})
-		}
-
-		event.attendees = attendees;
-		var xhr = new XMLHttpRequest();
-		xhr.open("POST", 'https://api.parse.com/1/classes/Event', true);
+		xhr.open("POST", 'https://api.parse.com/1/classes/UserEvent', true);
 		addHeaderKeys(xhr);
 		xhr.setRequestHeader("Content-Type", "application/json");
-    	var data = JSON.stringify(event);
+    	var data = JSON.stringify({"event":eventRel,"userId":userId});
 		xhr.send(data);
 		
 		var eventId;
@@ -139,21 +113,57 @@ function createParseAPI(){
 		  if (xhr.readyState == 4) {
 		    var result = JSON.parse(xhr.responseText);
 		    if (result.objectId && callBack != undefined) {
-		    	updateUsers(result.objectId);
+		    	console.log("result" + result);
+		    	callBack(result.objectId);
+		    }
+		  }
+		}
+	}
+
+	api.createEvent = function(eventObj, callBack){
+		for (var prop in eventObj){
+			console.log("prop : " + prop +" " + eventObj[prop])
+		}
+		var attendees = [];
+		var geoLocation = {
+          "__type": "GeoPoint",
+          "latitude": eventObj.destination.latitude,
+          "longitude": eventObj.destination.longitude
+        }
+        eventObj.destination = geoLocation;
+        console.log(" obj e" + eventObj);
+		for (var userId in eventObj.attendees){
+			console.log("user id baby" + userId)
+			attendees.push({"__type":"Pointer","className":"User","objectId":userId})
+		}
+
+		eventObj.attendees = attendees;
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", 'https://api.parse.com/1/classes/Event', true);
+		addHeaderKeys(xhr);
+		xhr.setRequestHeader("Content-Type", "application/json");
+    	var data = JSON.stringify(eventObj);
+		xhr.send(data);
+		
+		var eventId;
+		xhr.onreadystatechange = function() {
+		  if (xhr.readyState == 4) {
+		    var result = JSON.parse(xhr.responseText);
+		    if (result.objectId && callBack != undefined) {
+		    	console.log(JSON.stringify(result));
+		    	updateUsers(result.attendees, result.objectId);
 				callBack(result.objectId);
 		    }
 		  }
 		}
-		function updateUsers(eventId){
+		function updateUsers(attendees, eventId){
 			for (var userRel in attendees){
 				console.log("rel" + userRel);
-				ParseAPI.addEventToUser(userRel.objectId, eventId, function(text){
+				ParseAPI.addUserEventJoin(userRel.objectId, eventId, function(text){
 					console.log(text);
 				});
-				attendees.push({"__type":"Pointer","className":"User","objectId":userId})
 			}
 		}
-		
 	}
 
 	function addHeaderKeys(xhr){
@@ -178,32 +188,9 @@ function createParseAPI(){
 };
 
 var ParseAPI = createParseAPI();
-
-console.log("wde")
-ParseAPI.signUp("edd"+ Math.random(),"edd", function(text){
-	console.log(text);
-});
-ParseAPI.login("edd","edd", function(text){
-	console.log(text);
-});
-ParseAPI.getEvents("9nybCoNLoB", function(text){
+ParseAPI.addUserEventJoin("ZpAI0Af1G1","P5YmFFwZPI", function(text){
 	console.log(text);
 });
 
-ParseAPI.createEvent({"name":"name","attendees":["KnU2QZPoHh"],"destination":{"latitude":40,"longitude":20},"punishment":"punishment","startTime":50,"endTime":60}, 
-	function(text){
-	console.log(text);
-});
 
-ParseAPI.getEvent("uWzO8C7QLV", function(obj){
-	console.log("get event");
-	for(var prop in obj){
-		console.log(prop + " " + obj[prop])
-	}
-});
-ParseAPI.getLocations("uWzO8C7QLV", function(obj){
-	console.log("get event");
-	for(var prop in obj){
-		console.log("loc" + prop + " " + obj[prop])
-	}
-});
+
