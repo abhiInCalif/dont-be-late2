@@ -19,7 +19,8 @@ textarea {
 }
 
 .navbar-header{
-	font-family: 'Maiden Orange', cursive;
+	font-family: 'Maiden Orange', cursive !important;
+	background-color: #FFD800 !important;
 }
 	
 #loginbg{
