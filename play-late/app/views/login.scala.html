@@ -24,6 +24,17 @@
       <p>
 
       <div class="container" id="loginbg">
+
+      <script type="text/javascript">
+      $(function() {
+        $('#login-form').submit(function(){
+          $.get('/login', function() {
+            window.location = '/';
+          });
+          return false;
+        });
+      });
+        </script>
         <form id="login-form">
           <div class="form-group">
             <input type="text" class="form-control" id="username" placeholder="Username">

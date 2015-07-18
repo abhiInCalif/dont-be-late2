@@ -28,6 +28,17 @@
 			  disableRubberBanding : true,
 			  disableBreakoutSelector : 'a.no-break-out'
 			});
+
+      // var commitments = getCommitments();
+      // var history = getHistory();
+      // var name = getName();
+      var id = "whatever";
+      $(".list-group-item").click(function() {
+        window.location.replace("/track/" + id);
+      });
+      $("#addEvent").click(function() {
+        window.location.replace("/create");
+      });
 		});
 	</script>
   </head>
@@ -56,11 +67,11 @@
         </div>
         <div id="navbarContent" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="#">Dashboard</a></li>
+            <li class="active"><a href="/">Dashboard</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Events</a></li>
+            <li><a href="#" id="addEvent">Add Event</a></li>
               <!--<li><a href="#">Leaderboard</a></li>-->
-            <li><a href="#">Help</a></li>
             <li><a href="#">Logout</a></li>
 
           </ul>
@@ -69,6 +80,37 @@
     </nav>
     <div class="container">
     <div class="list-group">
+      <div class="list-group-item list-group-custom" href="#">
+        <img src="http://www.vectorsland.com/imgd/l63694-yahoo-y-logo-21977.png" class="img-rounded pull-left">
+        <h4 class="list-group-item-heading name-align">Hello, Abhinav Khanna</h4>
+        <p class="list-group-item-text"><br /></p>
+      </div>
+    </div>
+    <div class="list-group panel panel-warning">
+      <div class="panel-heading">Commitments</div>
+
+        <!-- list of sample data -->
+
+      <a class="list-group-item list-group-custom" href="#">
+        <img src="http://www.vectorsland.com/imgd/l63694-yahoo-y-logo-21977.png" class="img-rounded pull-left">
+        <h4 class="list-group-item-heading">Barish, Joseph</h4>
+        <p class="list-group-item-text">Masung Corp.</p>
+      </a>
+
+      <a class="list-group-item list-group-custom" href="#">
+        <img src="http://www.vectorsland.com/imgd/l63694-yahoo-y-logo-21977.png" class="img-rounded pull-left">
+        <h4 class="list-group-item-heading">Acey, Sofia</h4>
+        <p class="list-group-item-text">Masung Corp.</p>
+      </a>
+
+      <a class="list-group-item list-group-custom" href="#">
+        <img src="http://www.vectorsland.com/imgd/l63694-yahoo-y-logo-21977.png" class="img-rounded pull-left">
+        <h4 class="list-group-item-heading">Bess, Jerry</h4>
+        <p class="list-group-item-text">ZetaComm</p>
+      </a>
+    </div><!--list-group-->
+    <div class="list-group panel panel-info">
+      <div class="panel-heading">History</div>
 
         <!-- list of sample data -->
 
