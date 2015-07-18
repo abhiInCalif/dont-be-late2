@@ -30,7 +30,7 @@ function createParseAPI(){
 		    var result = JSON.parse(xhr.responseText);
 		    console.log(xhr.responseText);
 		    if (result["objectId"] && callBack != undefined) {
-		    	callBack({"msg":result["objectId"],"SessionToken":result["sessionToken"]})
+		    	callBack({"objectId":result["objectId"],"sessionToken":result["sessionToken"]})
 		    } else {
 		    	callBack({"msg":"error"})
 		    }
