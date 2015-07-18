@@ -20,7 +20,7 @@ public class Application extends Controller {
     return ok(create.render());
   }
 
-  public Result track() {
-    return ok(track.render());
+  public Result track(String id) {
+    return ok(track.render(id));
   }
 }
