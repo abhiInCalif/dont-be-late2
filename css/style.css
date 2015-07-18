@@ -18,6 +18,10 @@ body {
      background-attachment: fixed;
 }
 
+#loginbg {
+	background-image: url('../hourglass.jpg'); 
+}
+
 /* to ensure the textarea in /editExhibit fills the page */
 textarea {
      -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -43,4 +47,13 @@ input {
 
 .modal {
     overflow-y: auto;    /*removes scrollbar from appearing when unnecessary*/
+}
+
+.navbar-shift {
+	margin-top: 50px;
+}
+
+.img-rounded {
+	height: 25px;
+	width: 25px;
 }
