@@ -24,6 +24,11 @@ public class Application extends Controller {
     return ok(track.render(id));
   }
 
+  public Result profile() {
+    return ok(profile.render());
+  }
+
+
   public Result leader() {
     return ok(leader.render());
   }
