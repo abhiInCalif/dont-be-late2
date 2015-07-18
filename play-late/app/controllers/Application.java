@@ -23,4 +23,8 @@ public class Application extends Controller {
   public Result track(String id) {
     return ok(track.render(id));
   }
+
+  public Result leader() {
+    return ok(leader.render());
+  }
 }
