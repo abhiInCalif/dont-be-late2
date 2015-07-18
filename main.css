@@ -11,3 +11,15 @@
 	margin-left: 0px;
 	padding-left: 0px;
 }
+
+.input-group-custom {
+	margin-bottom: 5px;
+}
+
+.input-custom {
+	border-radius: 0px !important;
+}
+
+.span-custom {
+	border-radius: 0px !important;
+}

@@ -1,0 +1,86 @@
+<!doctype html>
+
+<html>
+<head>
+	<title>Don't Be Late | Dashboard</title>	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+	<!--
+	<link href="css/stylesheet.css" rel="stylesheet">
+-->
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic' rel='stylesheet' type='text/css'>    
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/css/bootcards-desktop.min.css">
+	<link rel="stylesheet" href="main.css">	 
+	<script src="node_modules/jquery/dist/jquery.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/js/bootcards.min.js"></script> 
+	<script>
+		$(document).ready(function() {
+			bootcards.init( {
+			  offCanvasBackdrop : true,
+			  offCanvasHideOnMainClick : true,
+			  enableTabletPortraitMode : true,
+			  disableRubberBanding : true,
+			  disableBreakoutSelector : 'a.no-break-out'
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div id="divContainer" class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarContent">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand navbar-left" href="#">
+					Mobile first web site
+				</a>
+			</div>
+			<div id="navbarContent" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Help</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="input-group input-group-lg input-group-custom">
+		<span class="input-group-addon span-custom" id="basic-addon1">Name</span>
+		<input type="text" class="form-control input-custom" placeholder="Abhinav Khanna" aria-describedby="basic-addon1">
+	</div>
+	<div class="input-group input-group-lg input-group-custom">
+		<span class="input-group-addon span-custom" id="basic-addon1">People</span>
+		<input type="text" class="form-control input-custom" placeholder="Person 1, Person 2, Person 3" aria-describedby="basic-addon1">
+	</div>
+	<div class="input-group input-group-lg input-group-custom">
+		<span class="input-group-addon span-custom" id="basic-addon1">Location</span>
+		<input type="text" class="form-control input-custom" placeholder="Los Altos" aria-describedby="basic-addon1">
+	</div>
+	<div class="input-group input-group-lg input-group-custom">
+		<span class="input-group-addon span-custom" id="basic-addon1">Punishment</span>
+		<input type="text" class="form-control input-custom" placeholder="15 pushups" aria-describedby="basic-addon1">
+	</div>
+	<div class="input-group input-group-lg input-group-custom">
+		<span class="input-group-addon span-custom" id="basic-addon1">Start Tracking</span>
+		<div class="dropdown">
+			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				Dropdown
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+				<li><a href="#">Action</a></li>
+				<li><a href="#">Another action</a></li>
+				<li><a href="#">Something else here</a></li>
+				<li><a href="#">Separated link</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
