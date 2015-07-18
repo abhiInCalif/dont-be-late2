@@ -7,6 +7,9 @@ html {
      height: 100%;
 }
 
+body {
+	background-color: #F7F7F7;
+}
 
 /* to ensure the textarea in /editExhibit fills the page */
 textarea {
@@ -19,12 +22,18 @@ textarea {
 	font-family: 'Maiden Orange', cursive;
 }
 	
+#loginbg{
+
+}
+
 input {
      width: 100%;
 }
 
+.logo {
+	padding-top: 10%;
+	max-height: 50%;
+	max-width: 70%;
 
-#signuplink {
-	color: #ffffff !important;
 }
 
