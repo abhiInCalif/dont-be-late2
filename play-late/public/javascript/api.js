@@ -30,7 +30,7 @@ function createParseAPI(){
 		    var result = JSON.parse(xhr.responseText);
 		    console.log(xhr.responseText);
 		    if (result["objectId"] && callBack != undefined) {
-		    	callBack({"msg":result["objectId"]})
+		    	callBack({"msg":result["objectId"],"SessionToken":result["sessionToken"]})
 		    } else {
 		    	callBack({"msg":"error"})
 		    }
@@ -120,6 +120,29 @@ function createParseAPI(){
 		}
 	}
 
+	api.updateLocation = function(userId,newLocation, sessionToken, callBack){
+		var xhr = new XMLHttpRequest();
+		xhr.open("PUT", 'https://api.parse.com/1/users/' + userId , true);
+		addHeaderKeys(xhr);
+		xhr.setRequestHeader("X-Parse-Session-Token", sessionToken);
+		xhr.send(JSON.stringify({"location": {
+          "__type": "GeoPoint",
+          "latitude": newLocation.latitude,
+          "longitude": newLocation.longitude
+        }}));
+		xhr.onreadystatechange = function() {
+		  if (xhr.readyState == 4) {
+		    var result = JSON.parse(xhr.responseText);
+		 	console.log(xhr.responseText);
+		    if (result && callBack != undefined) {
+		    	callBack({"msg":result});
+		    }else{
+		    	callBack({"msg":"error"});
+		    }
+		  }
+		}
+	}
+
 
 	api.createEvent = function(eventObj, callBack){
 		for (var prop in eventObj){
@@ -187,6 +210,10 @@ function createParseAPI(){
 	}
 	return api;
 };
+var api = createParseAPI();
+// api.updateLocation("tJoKnQHoDJ", {"longitude":50,"latitude":50}, function(text){
+// 	console.log(text.msg)
+// })
 
 
 
