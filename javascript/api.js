@@ -160,7 +160,7 @@ ParseAPI.getEvents("9nybCoNLoB", function(text){
 	console.log(text);
 });
 
-ParseAPI.createEvent({"name":"name","attendees":["9nybCoNLoB"],"destination":{"latitude":40,"longitude":20},"punishment":"punishment","startTime":50,"endTime":60}, 
+ParseAPI.createEvent({"name":"name","attendees":["KnU2QZPoHh"],"destination":{"latitude":40,"longitude":20},"punishment":"punishment","startTime":50,"endTime":60}, 
 	function(text){
 	console.log(text);
 });
