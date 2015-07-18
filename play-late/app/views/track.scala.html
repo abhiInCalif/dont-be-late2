@@ -26,33 +26,65 @@
       </script>
       <script type="text/javascript">
         function initialize() {
+          var count = 0;
+          var batLocations = [new google.maps.LatLng(37.415505, -122.092883),
+          new google.maps.LatLng(37.416536, -122.093026),
+          new google.maps.LatLng(37.417722, -122.093130),
+          new google.maps.LatLng(37.418933, -122.093216),
+          new google.maps.LatLng(37.420470, -122.092661),
+          new google.maps.LatLng(37.421624, -122.092054),
+          new google.maps.LatLng(37.422930, -122.091387),
+          new google.maps.LatLng(37.423644, -122.090284),
+          new google.maps.LatLng(37.423790, -122.088844),
+          new google.maps.LatLng(37.423387, -122.086513)];
+          var superLocations = [new google.maps.LatLng(37.415505, -122.092883),
+          new google.maps.LatLng(37.423120, -122.077938),
+          new google.maps.LatLng(37.423342, -122.077171),
+          new google.maps.LatLng(37.423333, -122.075996),
+          new google.maps.LatLng(37.423333, -122.074827),
+          new google.maps.LatLng(37.423342, -122.073765),
+          new google.maps.LatLng(37.423325, -122.073014),
+          new google.maps.LatLng(37.423316, -122.071898),
+          new google.maps.LatLng(37.423052, -122.071533),
+          new google.maps.LatLng(37.423359, -122.071125)];
           var mapOptions = {
             zoom: 4,
             center: new google.maps.LatLng(-33, 151)
-          }
+          };
           var map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
 
-          var image = '/assets/Batman.png';
-          var myLatLng = new google.maps.LatLng(-33.890542, 151.274856);
-          var beachMarker = new google.maps.Marker({
-            position: myLatLng,
+          var batMarker = new google.maps.Marker({
+            position: batLocations[0],
             map: map,
-            icon: image
+            icon: '/assets/Batman.png'
+          });
+          var superMarker = new google.maps.Marker({
+            position: superLocations[0],
+            map: map,
+            icon: '/assets/Superman.png'
           });
           // var dest = getDestination(); // expects latLong
           var destMarker = new google.maps.Marker({
-            position: new google.maps.LatLng(-32.89, 150.27),
+            position: new google.maps.LatLng(37.423327, -122.070741),
             map: map
           });
 
-          var markers = [beachMarker, destMarker];
+          var markers = [batMarker, superMarker, destMarker];
           var bounds = new google.maps.LatLngBounds();
           for(i = 0; i < markers.length; i++) {
             bounds.extend(markers[i].getPosition());
           }
 
           map.fitBounds(bounds);
+          count++;
+          window.setInterval(function() {
+          if (count < 10) {
+          batMarker.setPosition(batLocations[count]);
+          superMarker.setPosition(superLocations[count]);
+          count++;
+          }
+          }, 5000);
         }
 
         google.maps.event.addDomListener(window, 'load', initialize);
@@ -106,10 +138,10 @@
     </nav>
       <div id="mapContainer">
         <div class="otherInfo">
-          <div><b>Event:</b> Jumping for Joy that We are almost Done</div>
-          <div><b>People:</b> Person 1, Person 2, Person 3</div>
-          <div><b>Location:</b> Santa Clara, CA</div>
-          <div><b>Punishment:</b> 15 pushups</div>
+          <div><b>Event:</b> LinkedIn Hackday Check-in</div>
+          <div><b>People:</b> Superman, Batman, Spiderman, Wonder Woman, Flash</div>
+          <div><b>Location:</b> Linkedin HQ: Mountain View, CA</div>
+          <div><b>Punishment:</b> Sing Don't Stop Believing</div>
         </div>
         <div id="map-canvas"></div>
       </div>
