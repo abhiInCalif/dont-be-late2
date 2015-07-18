@@ -1,0 +1,46 @@
+h1, h2, h3, h4, h5 {
+     color: #8382BF;
+     font-family: Arial Rounded MT Bold;
+
+
+html {
+     height: 100%;
+}
+
+body {
+     font-family: "Source Sans Pro", "Arial", sans-serif;
+     font-size: 14px;
+     color: #000000;
+     background-color: rgba(212,228,239,1);
+     background-image: url('../images/gallerybg.jpg'); 
+     background-size: auto 100%;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+}
+
+/* to ensure the textarea in /editExhibit fills the page */
+textarea {
+     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+     box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+input {
+     width: 100%;
+}
+
+.box {
+     background-color:rgba(255,255,255,.8);
+     padding: 10px 10px 10px 10px;
+}
+
+.img_upload {
+     border: 1px solid;
+     border-color: #c0c0c0;
+     cursor: pointer;
+     border-radius: 5px;
+}
+
+.modal {
+    overflow-y: auto;    /*removes scrollbar from appearing when unnecessary*/
+}
