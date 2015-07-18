@@ -29,9 +29,13 @@
 			  disableBreakoutSelector : 'a.no-break-out'
 			});
 
-      var commitments = getCommitments();
-      var history = getHistory();
-      var name = getName();
+      // var commitments = getCommitments();
+      // var history = getHistory();
+      // var name = getName();
+      var id = "whatever";
+      $(".list-group-item").click(function() {
+        window.location.replace("/track/" + id);
+      });
 		});
 	</script>
   </head>
@@ -72,6 +76,37 @@
       </div>
     </nav>
     <div class="list-group">
+      <div class="list-group-item list-group-custom" href="#">
+        <img src="http://www.vectorsland.com/imgd/l63694-yahoo-y-logo-21977.png" class="img-rounded pull-left">
+        <h4 class="list-group-item-heading name-align">Hello, Abhinav Khanna</h4>
+        <p class="list-group-item-text"><br /></p>
+      </div>
+    </div>
+    <div class="list-group panel panel-warning">
+      <div class="panel-heading">Commitments</div>
+
+        <!-- list of sample data -->
+
+      <a class="list-group-item list-group-custom" href="#">
+        <img src="http://www.vectorsland.com/imgd/l63694-yahoo-y-logo-21977.png" class="img-rounded pull-left">
+        <h4 class="list-group-item-heading">Barish, Joseph</h4>
+        <p class="list-group-item-text">Masung Corp.</p>
+      </a>
+
+      <a class="list-group-item list-group-custom" href="#">
+        <img src="http://www.vectorsland.com/imgd/l63694-yahoo-y-logo-21977.png" class="img-rounded pull-left">
+        <h4 class="list-group-item-heading">Acey, Sofia</h4>
+        <p class="list-group-item-text">Masung Corp.</p>
+      </a>
+
+      <a class="list-group-item list-group-custom" href="#">
+        <img src="http://www.vectorsland.com/imgd/l63694-yahoo-y-logo-21977.png" class="img-rounded pull-left">
+        <h4 class="list-group-item-heading">Bess, Jerry</h4>
+        <p class="list-group-item-text">ZetaComm</p>
+      </a>
+    </div><!--list-group-->
+    <div class="list-group panel panel-info">
+      <div class="panel-heading">History</div>
 
         <!-- list of sample data -->
 

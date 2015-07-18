@@ -63,3 +63,14 @@ label {
 .btn-group-custom-go {
 
 }
+
+.name-align {
+	position: relative;
+	top: 10px;
+	margin-left: 35%;
+}
+
+.otherInfo {
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
